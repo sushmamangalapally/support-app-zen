@@ -1,0 +1,37 @@
+footer {
+    font-size: 10px;
+    padding-top: 20px;
+}
+  
+.data {
+    color: #363;
+    padding-left: 6px;
+}
+  
+#content td {
+	font-size: 12px;
+	padding-top: 2px;
+}
+
+.nasa-picture {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.nasa-picture img {
+    height: 125px;
+}
+
+p.nasa-desc {
+    text-align: center;
+    font-weight: 500;
+}
+
+#datepicker {
+    margin: 0 auto;
+    width: 80%;
+}
+
+h1 {
+    text-align: center;
+}
