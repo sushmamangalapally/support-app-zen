@@ -36,8 +36,6 @@ client.on("sendImgUrl", function (imgObj) {
     const content = document.querySelector('#content');
     if (content) {
         content.innerHTML = html;
-        console.log(imgObj);
-        console.log(imgObj.size);
         if (imgObj.size === "height") {
             document.querySelector("img.modalFullImg").style.height = "100vh";
         } else {

@@ -62,10 +62,6 @@ function modalPopup() {
     const imgSrc = document.querySelector(".nasa-picture img").src;
     const imgHeight = document.querySelector(".nasa-picture img").height;
     const imgWidth = document.querySelector(".nasa-picture img").width;
-    console.log('imgWidth')
-    console.log(imgWidth)
-    console.log('imgHeight')
-    console.log(imgHeight)
     let imgSize = (imgHeight > imgWidth) ? 'height' : 'width';
 
     let options = {
