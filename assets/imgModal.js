@@ -21,9 +21,9 @@ client.on("modal.close", function () {
     client.invoke("destroy");
 });
 
-client.on("sendImgUrl", function (sentUrl) {
+client.on("sendImgUrl", function (imgObj) {
     let requester_data = {
-        url: sentUrl,
+        url: imgObj.imgSrc,
     };
 
     let source = '';
@@ -36,5 +36,12 @@ client.on("sendImgUrl", function (sentUrl) {
     const content = document.querySelector('#content');
     if (content) {
         content.innerHTML = html;
+        console.log(imgObj);
+        console.log(imgObj.size);
+        if (imgObj.size === "height") {
+            document.querySelector("img.modalFullImg").style.height = "100vh";
+        } else {
+            document.querySelector("img.modalFullImg").style = "width: 100%; position: absolute; top: 0; bottom: 0;";
+        }
     }
 });

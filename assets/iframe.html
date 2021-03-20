@@ -2,27 +2,33 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
   <link href="main.css" rel="stylesheet"> 
 </head>
 <body>
-  <h1>Astronomy Picture of the Day</h1>
-  <div id="content"></div>
+  <div class="sidebarBody">
+    <p>Astronomy Picture of the Day</p>
+    <div id="content"></div>
 
-  <div id="datepicker" ></div>
-  <input type="hidden" id="my_hidden_input">
+    <div id="datepicker" ></div>
+    <input type="hidden" id="my_hidden_input">
 
-  <footer>
-    <a href="https://mysite.github.io/support" target="_blank">Report bugs</a>
-  </footer>
+    <footer>
+      <a href="https://mysite.github.io/support" target="_blank">Report bugs</a>
+    </footer>
+  </div>
 
   <script id="requester-template" type="text/x-handlebars-template">
       <div class="nasa-content">
-        <p class="nasa-desc">{{desc}}</p>
-        <p class="nasa-desc">{{date}}</p>
         <div class="nasa-picture">
           <img onclick="modalPopup()" src={{url}} alt={{desc}} srcset="">
         </div>
+        <p class="nasa-desc descr">{{desc}}</p>
+        <p class="nasa-desc date">{{date}}</p>
+
       </div>
   </script>
 

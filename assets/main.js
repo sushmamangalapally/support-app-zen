@@ -4,17 +4,19 @@ $(function () {
         $("#my_hidden_input").val(
             $("#datepicker").datepicker("getFormattedDate")
         );
-        const newDate = formatDateforAPI(e.date);
-        setAstronomyPicDay(newDate);
+        const formattedAPIDate = formatDateforAPI(e.date);
+        setAstronomyPicDay(formattedAPIDate);
     });
 });
 
 function formatDateforAPI(date) {
     let changedDate = new Date(date.toString());
+    let nowDate = new Date();
+    const apiDate = nowDate.getTime() < changedDate.getTime() ? nowDate : changedDate;
     const [month, day, year] = [
-        changedDate.getMonth(),
-        changedDate.getDay(),
-        changedDate.getFullYear(),
+        apiDate.toLocaleDateString("UTC", { month: 'numeric' }),
+        apiDate.toLocaleDateString("UTC", { day: 'numeric' }),
+        apiDate.toLocaleDateString("UTC", { year: 'numeric' }),
     ];
     const newDate = year + "-" + month + "-" + day;
     return newDate;
@@ -37,7 +39,6 @@ async function setAstronomyPicDay(date = "") {
         const data = await fetchPlanetPic(date);
         displayPicture(data);
     } catch (e) {
-        console.error(e);
         showError(e);
     }
 }
@@ -59,12 +60,20 @@ async function fetchPlanetPic(date) {
 
 function modalPopup() {
     const imgSrc = document.querySelector(".nasa-picture img").src;
+    const imgHeight = document.querySelector(".nasa-picture img").height;
+    const imgWidth = document.querySelector(".nasa-picture img").width;
+    console.log('imgWidth')
+    console.log(imgWidth)
+    console.log('imgHeight')
+    console.log(imgHeight)
+    let imgSize = (imgHeight > imgWidth) ? 'height' : 'width';
+
     let options = {
         location: "modal",
         url: "assets/modal.html",
         size: {
-            width: "650px",
-            height: "600px",
+            width: "80vw",
+            height: "80vh",
         },
     };
     client.invoke("instances.create", options).then(function (modalContext) {
@@ -73,7 +82,7 @@ function modalPopup() {
         );
 
         client.on("modalReady", function () {
-            modalClient.trigger("sendImgUrl", imgSrc);
+            modalClient.trigger("sendImgUrl", {'imgSrc': imgSrc, 'size': imgSize});
         });
         modalClient.on("modal.close", function () {
             // The modal has been closed
