@@ -15,5 +15,3 @@ Please submit bug reports to [Insert Link](). Pull requests are welcome.
 
 ### Screenshot(s):
 [put your screenshots down here.]
-https://github.com/sushmamangalapally/support-app-zen/ScreenShotZen1.png
-https://github.com/sushmamangalapally/support-app-zen/ScreenShotZen2.png
